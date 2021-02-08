@@ -47,13 +47,7 @@ fun <I, A> Parser<I, A>.where(predicate: (A) -> Boolean): Parser<I, A> =
             fails()
         }
     }
-}
 
 fun charIn(vararg cs: Char): Parser<Char, Char> = `try`(any<Char>().where { it in cs })
 fun charIn(s: String): Parser<Char, Char> = `try`(any<Char>().where { it in s })
 fun char(c: Char): Parser<Char, Char> = charIn(c)
-
-fun <I, A> Parser<I, A>.or(p: Parser<I, A>) = { reader ->
-    val a = this(reader)
-
-}
